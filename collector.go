@@ -5,9 +5,9 @@ import (
       "net"
       "net/http"
       "github.com/prometheus/client_golang/prometheus"
-      "github.com/pkg/errors"
   log "github.com/Sirupsen/logrus"
-      "database/sql"
+    _ "github.com/pkg/errors"
+    _ "database/sql"
     _ "gopkg.in/goracle.v2"
 )
 
@@ -66,7 +66,7 @@ func init() {
         log.Fatal(err)
       }
       
-      humanTaskMismatchesForNotificationsMetric.WithLabelValues("mmd").Inc() //Add(42)//Set(123)
+      humanTaskMismatchesForNotificationsMetric.WithLabelValues("DE","Ware aus dem Verkauf").Inc() //Add(42)//Set(123)
       
 			time.Sleep(time.Duration(15) * time.Second)
     }
@@ -93,7 +93,7 @@ func init() {
    
       log.Info(response)
       
-      humanTaskMismatchesForNotificationsMetric.WithLabelValues("mmd").Inc() //Add(42)//Set(123)
+      humanTaskMismatchesForNotificationsMetric.WithLabelValues("DE","Ware aus dem Verkauf").Inc() //Add(42)//Set(123)
 
 			time.Sleep(time.Duration(15) * time.Second)
 		}
