@@ -5,6 +5,7 @@ import (
       "net"
       "net/http"
       "github.com/prometheus/client_golang/prometheus"
+    _ "github.com/patrickmn/go-cache"
   log "github.com/Sirupsen/logrus"
     _ "github.com/pkg/errors"
     _ "database/sql"
@@ -21,8 +22,35 @@ var humanTaskMismatchesForNotificationsMetric = prometheus.NewGaugeVec(
 
 func init() {
   prometheus.MustRegister(humanTaskMismatchesForNotificationsMetric)
-   
-  // periodically fetch the database information
+  
+  // initially search for all sent notifications and add them to the cache
+  // TODO: :-)
+
+  // initially search for all retrieved notifications and add the number of created tasks to the cache
+  // TODO: :-)
+
+/*
+  // get number of theoretical human tasks for each sender country process and store in memory
+  // if possible filter done processes before - or filter by creation time (1 month)
+  // TODO: CACHE IS NOT ALLOWED TO EXPIRE!!!
+  expectedCount := cache.New(5*time.Minute, 10*time.Minute)
+  
+  // set falue for sent notification
+  expectedCount.Set("57458", 42, cache.NoExpiration)
+  
+  // Get the string associated with the key "foo" from the cache
+	expectedCount, found := expectedCount.Get("foo")
+	if !found {
+		// calculate 
+	}
+*/
+
+  // periodically search for newly sent notifications and add them to the cache
+  // TODO: :-)
+
+  // periodically search for newly retrieved notifications and add the number of created tasks to the cache
+  // TODO: :-)
+  
 /*
   go func() {
     for {
